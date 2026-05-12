@@ -1,14 +1,14 @@
 Page({
   data: {
-    name: "melusine",
-    products:[]
+    productDetail:{}
   },
 
   onLoad(option){
-    const no =options.no;
-    data:{no:no};
+    const no = option.no;
     wx.request({
       url:"http://localhost:8080/product/detail",
+      method:"POST",
+      data:{strNo: no},
       success:(resp)=>{
         const productDetail=resp.data;
         this.setData({productDetail:productDetail})

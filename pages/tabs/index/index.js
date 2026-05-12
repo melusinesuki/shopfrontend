@@ -17,10 +17,10 @@ Page({
     })
   },
   toDetail(e){
-    const productName=e.currentTarget.dataset.name;
-    console.assert.log(productName)
+    const productNo=e.currentTarget.dataset.no;
+    console.log(productNo)
     wx.navigateTo({
-        url:'/pages/index/product-detail/index?name='+productName
+        url:'/pages/index/product-detail/index?no='+productNo
       })
   }
 })
