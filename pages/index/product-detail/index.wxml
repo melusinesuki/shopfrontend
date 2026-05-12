@@ -1,0 +1,9 @@
+<view>
+  <view>
+    <view wx:for="{{products}}" bind:tap="toDetail" data-name="{{item.name}}">
+    <image src="{{item.strSurfacse}}"> </image>
+    <view>{{item.strTitle}}</view>
+    <view>{{item.intPrice/100}}元</view>
+    </view>
+  </view>
+</view>

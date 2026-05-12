@@ -1,0 +1,12 @@
+/**index.wxss**/
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-text {
+  font-size: 24px;
+  color: #333;
+}
