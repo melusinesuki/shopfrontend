@@ -5,8 +5,8 @@
   ],
   "window": {
     "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarBackgroundColor": "#ffffff"
+    "navigationBarTitleText": "优选商城",
+    "navigationBarBackgroundColor": "#ff4757"
   },
   "style": "v2",
   "componentFramework": "glass-easel",
