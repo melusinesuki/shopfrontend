@@ -1,4 +1,4 @@
-<view wx:if="{{productDetail.strNo}}">
+<view wx:if="{{productDetail.longId}}">
 
   <!-- 商品图片 -->
   <image class="product-image" src="{{productDetail.strSurface}}" mode="aspectFill"></image>
@@ -47,6 +47,6 @@
 
 </view>
 
-<view class="loading" wx:if="{{!productDetail.strNo && loading}}">
+<view class="loading" wx:if="{{!productDetail.longId && loading}}">
   <text>加载中...</text>
 </view>

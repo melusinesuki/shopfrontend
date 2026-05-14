@@ -1,4 +1,4 @@
-/* 搜索栏 */
+
 .search-bar {
   padding: 16rpx 28rpx;
   background: #fff;
@@ -84,6 +84,13 @@
 .section-more {
   font-size: 24rpx;
   color: #999;
+}
+.filter{
+  position:sticky;
+  top:0;
+  display:flex;
+  justify-content: flex-stars;
+  align-items:center;
 }
 
 /* 商品网格 */

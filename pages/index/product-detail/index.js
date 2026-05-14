@@ -1,15 +1,20 @@
 Page({
   data: {
     productDetail: {},
-    loading: true
+    priceText: '',
+    statusText: '',
+    createdTimeText: '',
+    updatedTimeText: '',
+    deletedTimeText: '',
+    loading: false
   },
 
   onLoad(option) {
-    const no = option.no
+    const id = option.id
     wx.request({
       url: "http://localhost:8080/product/detail",
       method: "POST",
-      data: { strNo: no },
+      data: { longId: id },
       success: (resp) => {
         const resultBean = resp.data
         if (resultBean.intCode == 200) {
