@@ -1,0 +1,33 @@
+<view class="login-page">
+  <view class="login-header">
+    <text class="login-title">欢迎回来</text>
+    <text class="login-desc">使用邮箱验证码登录</text>
+  </view>
+
+  <view class="login-form">
+    <view class="form-item">
+      <text class="form-label">邮箱</text>
+      <input class="form-input"
+             type="text"
+             placeholder="请输入邮箱"
+             value="{{strEmail}}"
+             bind:input="changeEmail"/>
+    </view>
+
+    <view class="form-item-code">
+      <input class="form-input form-input-half"
+             type="text"
+             placeholder="验证码"
+             value="{{strCode}}"
+             bind:input="changeCode"/>
+      <button class="code-btn" bind:tap="sendCode">{{codeBtnText}}</button>
+    </view>
+
+    <button class="login-btn">登 录</button>
+
+    <view class="login-bottom">
+      <text>还没有账号？</text>
+      <text class="link" bind:tap="toRegister">去注册</text>
+    </view>
+  </view>
+</view>

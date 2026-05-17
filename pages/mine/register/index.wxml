@@ -1,0 +1,17 @@
+<view>
+  <view>
+    <view>用户名:</view>
+    <view>
+      <input bind:input="changeUsername"/>
+    </view>
+  </view>
+  <view>
+    <view>密码:</view>
+    <view><input bind:input="changePassword"/></view>
+  </view>
+  <view>
+    <view>确认密码:</view>
+    <view><input bind:input="changeRepassword"/></view>
+  </view>
+  <button bind:tap="register">注册</button>
+</view>

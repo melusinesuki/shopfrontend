@@ -1,7 +1,23 @@
 {
   "pages": [
     "pages/tabs/index/index",
-    "pages/index/product-detail/index"
+    "pages/tabs/shop/index",
+    "pages/tabs/mine/index"
+  ],
+  "subPackages": [
+    {
+      "root": "pages/shop",
+      "pages": [
+        "product-detail/index"
+      ]
+    },
+    {
+      "root": "pages/mine",
+      "pages": [
+        "login/index",
+        "register/index"
+      ]
+    }
   ],
   "window": {
     "navigationBarTextStyle": "white",
@@ -11,5 +27,22 @@
   "style": "v2",
   "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",
-  "lazyCodeLoading": "requiredComponents"
+  "lazyCodeLoading": "requiredComponents",
+  "entryPagePath": "pages/tabs/mine/index",
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/tabs/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/tabs/shop/index",
+        "text": "购物"
+      },
+      {
+        "pagePath": "pages/tabs/mine/index",
+        "text": "我的"
+      }
+    ]
+  }
 }

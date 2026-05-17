@@ -1,0 +1,1 @@
+<button type="primary" bind:tap="toLogin">登录</button>
