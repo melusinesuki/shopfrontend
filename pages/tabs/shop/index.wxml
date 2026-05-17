@@ -10,17 +10,25 @@
     </view>
   </swiper-item>
 </swiper>
-<div>
-  <view>
-    <input placeholder="商品名称搜索" bind:input="changeTitle"/>
-    <button bind:tap="search">搜索</button>
+<view class="search-bar">
+  <view class="search-input">
+    <text class="search-icon">🔍</text>
+    <input
+      class="search-field"
+      placeholder="搜索商品名称"
+      placeholder-class="search-placeholder"
+      value="{{title}}"
+      bind:input="changeTitle"
+      bind:confirm="search"
+    />
   </view>
-  <view class="filter">
-    <button bind:tap="changesort" data-orderby="created_at desc">最新上架</button>
-    <button bind:tap="changesort" data-orderby="int_price asc">低价优先</button>
-    <button bind:tap="changesort" data-orderby="sales desc">最畅销</button>
-  </view>
-</div>
+  <button class="search-btn" bind:tap="search">搜索</button>
+</view>
+<view class="filter">
+  <button bind:tap="changesort" data-orderby="created_at desc">最新上架</button>
+  <button bind:tap="changesort" data-orderby="int_price asc">低价优先</button>
+  <button bind:tap="changesort" data-orderby="sales desc">最畅销</button>
+</view>
 <!-- 商品网格 -->
 <view class="product-grid">
   <view class="product-card" wx:for="{{products}}" wx:key="longId"            

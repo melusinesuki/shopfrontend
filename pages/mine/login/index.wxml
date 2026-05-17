@@ -23,7 +23,7 @@
       <button class="code-btn" bind:tap="sendCode">{{codeBtnText}}</button>
     </view>
 
-    <button class="login-btn">登 录</button>
+    <button class="login-btn" bind:tap="toLogin">登 录</button>
 
     <view class="login-bottom">
       <text>还没有账号？</text>

@@ -1,1 +1,7 @@
-<button type="primary" bind:tap="toLogin">登录</button>
+<view class="mine-page">
+  <view class="mine-header">
+    <view class="avatar-placeholder">👤</view>
+    <text class="header-tip">登录后查看订单和收藏</text>
+    <button class="login-btn" bind:tap="toLogin">登录 </button>
+  </view>
+</view>

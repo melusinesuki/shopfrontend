@@ -57,7 +57,7 @@ Page({
     }, 1000);
   },
 
-  doLogin() {
+  toLogin() {
     const { strEmail, strCode } = this.data;
     if (!strEmail.trim()) {
       wx.showToast({ title: '请输入邮箱', icon: 'none' });
@@ -68,7 +68,24 @@ Page({
       return;
     }
     // TODO: 调后端登录接口验证邮箱+验证码
-    wx.showToast({ title: '登录功能待接入', icon: 'none' });
+    wx.request({
+      url: 'http://localhost:8080/member-account/login',
+      method: 'POST',
+      data: { strUsername: strEmail, strCode: strCode },
+      success: (resp) => {
+        const result = resp.data;
+        if (result.intCode === 200) {
+          wx.setStorageSync('token', result.objData);
+          wx.showToast({ title: '登录成功', icon: 'success' });
+          setTimeout(() => { wx.navigateBack(); }, 1500);
+        } else {
+          wx.showToast({ title: result.strMessage || '登录失败', icon: 'none' });
+        }
+      },
+      fail: () => {
+        wx.showToast({ title: '网络错误', icon: 'error' });
+      }
+    });
   },
 
   toRegister() {

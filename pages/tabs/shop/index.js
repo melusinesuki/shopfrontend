@@ -90,7 +90,7 @@ Page({
   toDetail(e) {
     const id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '/pages/index/product-detail/index?id=' + id
+      url: '/pages/shop/product-detail/index?id=' + id
     })
   },
   changesort(e) {                                                               
