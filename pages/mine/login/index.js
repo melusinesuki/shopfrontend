@@ -1,6 +1,7 @@
-// pages/mine/login/index.js
-Page({
+const { httpClient } = require('../../../utils/util.js');
+const app = getApp();
 
+Page({
   data: {
     strEmail: '',
     strCode: '',
@@ -16,7 +17,7 @@ Page({
     this.setData({ strCode: e.detail.value });
   },
 
-  sendCode() {
+  async sendCode() {
     const email = this.data.strEmail.trim();
     if (!email) {
       wx.showToast({ title: '请输入邮箱', icon: 'none' });
@@ -24,23 +25,13 @@ Page({
     }
     if (this.data.counting) return;
 
-    wx.request({
-      url: 'http://localhost:8080/member-account/send-email',
-      method: 'POST',
-      data: { strUsername: email },
-      success: (resp) => {
-        const result = resp.data;
-        if (result.intCode === 200) {
-          wx.showToast({ title: '验证码已发送', icon: 'success' });
-          this.startCountdown();
-        } else {
-          wx.showToast({ title: result.strMessage || '发送失败', icon: 'none' });
-        }
-      },
-      fail: () => {
-        wx.showToast({ title: '网络错误', icon: 'error' });
-      }
-    });
+    try {
+      await httpClient('/member-account/send-email', { strUsername: email });
+      wx.showToast({ title: '验证码已发送', icon: 'success' });
+      this.startCountdown();
+    } catch (e) {
+      // httpClient 已经弹了 toast，这里不需要再弹
+    }
   },
 
   startCountdown() {
@@ -57,7 +48,7 @@ Page({
     }, 1000);
   },
 
-  toLogin() {
+  async toLogin() {
     const { strEmail, strCode } = this.data;
     if (!strEmail.trim()) {
       wx.showToast({ title: '请输入邮箱', icon: 'none' });
@@ -67,29 +58,25 @@ Page({
       wx.showToast({ title: '请输入验证码', icon: 'none' });
       return;
     }
-    // TODO: 调后端登录接口验证邮箱+验证码
-    wx.request({
-      url: 'http://localhost:8080/member-account/login',
-      method: 'POST',
-      data: { strUsername: strEmail, strCode: strCode },
-      success: (resp) => {
-        const result = resp.data;
-        if (result.intCode === 200) {
-          wx.setStorageSync('token', result.objData);
-          wx.showToast({ title: '登录成功', icon: 'success' });
-          setTimeout(() => { wx.navigateBack(); }, 1500);
-        } else {
-          wx.showToast({ title: result.strMessage || '登录失败', icon: 'none' });
-        }
-      },
-      fail: () => {
-        wx.showToast({ title: '网络错误', icon: 'error' });
-      }
-    });
+
+    try {
+      const result = await httpClient('/member-account/login', {
+        strUsername: strEmail,
+        strCode: strCode
+      });
+      const token = result.objData;
+      // 同步 token 到 storage 和 globalData
+      wx.setStorageSync('token', token);
+      app.globalData.token = token;
+      app.globalData.isLogin = true;
+      wx.showToast({ title: '登录成功', icon: 'success' });
+      setTimeout(() => { wx.navigateBack(); }, 1500);
+    } catch (e) {
+      // httpClient 已经弹了 toast
+    }
   },
 
   toRegister() {
     wx.navigateTo({ url: '/pages/mine/register/index' });
   }
-
 });

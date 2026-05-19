@@ -1,12 +1,10 @@
+const { httpClient } = require('../../../utils/util.js');
+const app = getApp();
+
 Page({
   data: {
     productDetail: {},
-    priceText: '',
-    statusText: '',
-    createdTimeText: '',
-    updatedTimeText: '',
-    deletedTimeText: '',
-    loading: false
+    loading: true
   },
 
   onLoad(option) {
@@ -31,8 +29,24 @@ Page({
     })
   },
 
-  addToCart() {
-    wx.showToast({ title: '已加入购物车', icon: 'success' })
+  async addToCart() {
+    const productId = this.data.productDetail.longId;
+    if (!productId) return;
+
+    const cartItem = app.globalData.cart.find(item => item.longProductId == productId);
+
+    try {
+      if (!cartItem) {
+        await httpClient('/shop-cart/save', { longProductId: productId });
+        app.globalData.cart.push({ longProductId: productId, intNum: 1 });
+      } else {
+        cartItem.intNum++;
+        await httpClient('/shop-cart/edit', { longProductId: cartItem.longProductId, intNum: cartItem.intNum });
+      }
+      wx.showToast({ title: '已加入购物车', icon: 'success' });
+    } catch (e) {
+      // httpClient 已弹 toast
+    }
   },
 
   buyNow() {

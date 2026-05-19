@@ -1,14 +1,49 @@
+const { httpClient } = require('../../../utils/util.js');
+const app = getApp();
 
 Page({
-
-  
-  onLoad(options) {
-
+  data: {
+    isLogin: false,
+    memberInfo: {}
   },
-  toLogin(){
-    wx.navigateTo({url:"/pages/mine/login/index"});
+
+  onShow() {
+    this.setData({ isLogin: app.globalData.isLogin });
+    if (this.data.isLogin) {
+      this.loadUserInfo();
+    }
+  },
+
+  async loadUserInfo() {
+    try {
+      const result = await httpClient('/member-account/me', {});
+      this.setData({ memberInfo: result.objData });
+    } catch (e) {
+      // httpClient 已弹 toast，登录失效则清除状态
+      this.setData({ isLogin: false });
+      app.globalData.isLogin = false;
+      app.globalData.token = '';
+      wx.removeStorageSync('token');
+    }
+  },
+
+  toLogin() {
+    wx.navigateTo({ url: '/pages/mine/login/index' });
+  },
+
+  logout() {
+    wx.showModal({
+      title: '提示',
+      content: '确定要退出登录吗？',
+      success: (res) => {
+        if (res.confirm) {
+          app.globalData.isLogin = false;
+          app.globalData.token = '';
+          wx.removeStorageSync('token');
+          this.setData({ isLogin: false, memberInfo: {} });
+          wx.showToast({ title: '已退出', icon: 'none' });
+        }
+      }
+    });
   }
-
-  
-
-})
+});
