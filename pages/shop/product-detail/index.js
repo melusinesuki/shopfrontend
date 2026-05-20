@@ -60,5 +60,9 @@ Page({
         }
       }
     })
+  },
+
+  goToCart() {
+    wx.switchTab({ url: '/pages/tabs/shop-cart/index' });
   }
 })

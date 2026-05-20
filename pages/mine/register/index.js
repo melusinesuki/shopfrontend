@@ -1,53 +1,51 @@
+const { httpClient } = require('../../../utils/util.js');
 
 Page({
 
   data: {
     username: '',
-    password:'',
-    repassword:''
+    password: '',
+    repassword: ''
   },
-  changeUsername(e){
+
+  changeUsername(e) {
     this.setData({ username: e.detail.value });
   },
-  changePassword(e){
+  changePassword(e) {
     this.setData({ password: e.detail.value });
   },
-  changeRepassword(e){
+  changeRepassword(e) {
     this.setData({ repassword: e.detail.value });
   },
-  register(){
-    if(!this.data.username?.trim()){
-      wx.showToast({icon:"error",title:"用户名不能为空"})
+
+  async register() {
+    if (!this.data.username?.trim()) {
+      wx.showToast({ icon: 'error', title: '用户名不能为空' });
       return;
     }
-    if(!this.data.password?.trim()){
-      wx.showToast({icon:"error",title:"密码不能为空"})
+    if (!this.data.password?.trim()) {
+      wx.showToast({ icon: 'error', title: '密码不能为空' });
       return;
     }
-    if(this.data.password !=this.data.repassword){
-      wx.showToast({icon:"error",title:"两次密码不一致"})
+    if (this.data.password != this.data.repassword) {
+      wx.showToast({ icon: 'error', title: '两次密码不一致' });
       return;
     }
-    wx.request({
-      url: 'http://localhost:8080/member-account/register',
-      method: 'POST',
-      data: {
+
+    try {
+      await httpClient('/member-account/register', {
         strUsername: this.data.username,
         strPasswordHash: this.data.password,
         strRePasswordHash: this.data.repassword
-      },
-      success: (resp) => {
-        const resultBean = resp.data;
-        if (resultBean.intCode === 200) {
-          wx.showToast({ title: '注册成功', icon: 'success' });
-          setTimeout(() => { wx.navigateBack(); }, 1500);
-        } else {
-          wx.showToast({ title: resultBean.strMessage, icon: 'error' });
-        }
-      },
-      fail: () => {
-        wx.showToast({ title: '网络错误', icon: 'error' });
-      }
-    });
+      });
+      wx.showToast({ title: '注册成功', icon: 'success' });
+      setTimeout(() => { wx.navigateBack(); }, 1500);
+    } catch (e) {
+      // httpClient 已弹 toast
+    }
+  },
+
+  toLogin() {
+    wx.navigateBack();
   }
-})
+});

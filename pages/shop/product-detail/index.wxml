@@ -35,7 +35,7 @@
 
   <!-- 底部操作栏 -->
   <view class="bottom-bar">
-    <view class="bar-cart">
+    <view class="bar-cart" bind:tap="goToCart">
       <text class="bar-cart-icon">🛒</text>
       <text class="bar-cart-label">购物车</text>
     </view>

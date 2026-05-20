@@ -1,17 +1,44 @@
-<view>
-  <view>
-    <view>用户名:</view>
-    <view>
-      <input bind:input="changeUsername"/>
+<view class="login-page">
+  <view class="login-header">
+    <text class="login-title">注册账号</text>
+    <text class="login-desc">创建账号，开启购物之旅</text>
+  </view>
+
+  <view class="login-form">
+    <view class="form-item">
+      <text class="form-label">用户名</text>
+      <input class="form-input"
+             type="text"
+             placeholder="请输入用户名(邮箱)"
+             value="{{username}}"
+             bind:input="changeUsername"/>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">密码</text>
+      <input class="form-input"
+             type="text"
+             password
+             placeholder="请输入密码"
+             value="{{password}}"
+             bind:input="changePassword"/>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">确认密码</text>
+      <input class="form-input"
+             type="text"
+             password
+             placeholder="请再次输入密码"
+             value="{{repassword}}"
+             bind:input="changeRepassword"/>
+    </view>
+
+    <button class="login-btn" bind:tap="register">注 册</button>
+
+    <view class="login-bottom">
+      <text>已有账号？</text>
+      <text class="link" bind:tap="toLogin">去登录</text>
     </view>
   </view>
-  <view>
-    <view>密码:</view>
-    <view><input bind:input="changePassword"/></view>
-  </view>
-  <view>
-    <view>确认密码:</view>
-    <view><input bind:input="changeRepassword"/></view>
-  </view>
-  <button bind:tap="register">注册</button>
 </view>

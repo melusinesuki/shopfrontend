@@ -1,0 +1,45 @@
+<view class="cart-page">
+  <view class="cart-header">
+    <view class="cart-title">购物车</view>
+    <view class="cart-subtitle">共{{cart.length}}件商品</view>
+  </view>
+
+  <view class="cart-list" wx:if="{{cart.length > 0}}">
+    <view class="cart-card" wx:for="{{cart}}" wx:key="longId">
+      <checkbox class="item-check" checked="{{allSelected}}" bind:tap="toggleSelectAll"></checkbox>
+      <image class="goods-image" src="{{item.productBean.strSurface}}" mode="aspectFill"></image>
+      <view class="goods-info">
+        <view class="goods-name">{{item.productBean.strTitle}}</view>
+        <view class="goods-desc">{{item.productBean.strUse}}</view>
+        <view class="goods-bottom">
+          <view class="goods-price">¥{{item.productBean.intPrice / 100}}</view>
+          <view class="qty-stepper">
+            <view class="qty-btn" bind:tap="minus" data-id="{{item.longProductId}}">-</view>
+            <view class="qty-num">{{item.intNum}}</view>
+            <view class="qty-btn" bind:tap="plus" data-id="{{item.longProductId}}">+</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="cart-empty" wx:else>
+    <text class="empty-icon">🛒</text>
+    <text class="empty-text">购物车是空的</text>
+    <text class="empty-hint">去逛逛，发现心仪好物</text>
+  </view>
+
+  <view class="cart-bar" wx:if="{{cart.length > 0}}">
+    <view class="select-all" bind:tap="toggleSelectAll">
+      <checkbox checked="{{allSelected}}"></checkbox>
+      <text>全选</text>
+    </view>
+    <view class="bar-right">
+      <view class="total-box">
+        <text>合计</text>
+        <text class="total-price">¥{{totalPrice}}</text>
+      </view>
+      <button class="checkout-btn" bind:tap="checkout">结算</button>
+    </view>
+  </view>
+</view>
