@@ -16,7 +16,9 @@
       "root": "pages/mine",
       "pages": [
         "login/index",
-        "register/index"
+        "register/index",
+        "address-list/index",
+        "address-edit/index"
       ]
     }
   ],
@@ -30,6 +32,12 @@
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents",
   "entryPagePath": "pages/tabs/index/index",
+  "resolveAlias": {
+    "@/*": "/*"
+  },
+  "requiredPrivateInfos": [
+    "chooseLocation"
+  ],
   "tabBar": {
     "color": "#999999",
     "selectedColor": "#ff4757",

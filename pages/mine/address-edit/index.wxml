@@ -1,0 +1,37 @@
+<view class="edit-page">
+  <view class="page-head">
+    <view class="page-title">新增收货地址</view>
+    <view class="page-subtitle">填写准确的配送信息，方便订单及时送达</view>
+  </view>
+  <view class="form-card">
+    <view class="form-row">
+      <view class="field-label">收货人</view>
+      <input class="field-input" placeholder="请输入收货人姓名" placeholder-class="field-placeholder"
+      value="{{memberAddressBean.strNickname}}" bind:input="changeNickname"/>
+    </view>
+
+    <view class="form-row">
+      <view class="field-label">手机号码</view>
+      <input class="field-input" type="number" placeholder="请输入手机号码" placeholder-class="field-placeholder"
+      value="{{memberAddressBean.strCellphone}}" bind:input="changeCellphone"
+      />
+    </view>
+
+    <view class="form-row">
+      <view class="field-label">所在地区</view>
+      <view class="region-value" bind:tap="openMap">
+        <text class="region-placeholder">{{memberAddressBean.strProvinces}} / {{memberAddressBean.strCity}} / {{memberAddressBean.strDistrict}}</text>
+        <text class="region-arrow">›</text>
+      </view>
+    </view>
+
+    <view class="form-row textarea-row">
+      <view class="field-label">详细地址</view>
+      <textarea class="field-textarea" placeholder="街道、门牌号、楼层房间号等" placeholder-class="field-placeholder"
+      value="{{memberAddressBean.strDetailAddress}}" bind:input="changeDetailAddress"></textarea>
+    </view>
+  </view>
+
+
+  <view class="save-button" bind:tap="saveAddress">保存地址</view>
+</view>

@@ -1,0 +1,144 @@
+.edit-page {
+  min-height: 100vh;
+  padding: 34rpx 28rpx 54rpx;
+  box-sizing: border-box;
+  background: #f6f1eb;
+}
+
+.page-head {
+  margin-bottom: 26rpx;
+}
+
+.page-title {
+  font-size: 42rpx;
+  font-weight: 800;
+  line-height: 54rpx;
+  color: #24150d;
+}
+
+.page-subtitle {
+  margin-top: 8rpx;
+  font-size: 25rpx;
+  line-height: 36rpx;
+  color: #9a7a62;
+}
+
+.form-card,
+.setting-card {
+  border-radius: 24rpx;
+  background: #ffffff;
+  box-shadow: 0 14rpx 34rpx rgba(70, 45, 28, 0.1);
+}
+
+.form-card {
+  padding: 0 28rpx;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  min-height: 104rpx;
+  border-bottom: 1rpx solid #efe4d7;
+}
+
+.form-row:last-child {
+  border-bottom: 0;
+}
+
+.textarea-row {
+  align-items: flex-start;
+  padding: 26rpx 0;
+}
+
+.field-label {
+  flex-shrink: 0;
+  width: 150rpx;
+  font-size: 28rpx;
+  font-weight: 700;
+  line-height: 40rpx;
+  color: #3b2a20;
+}
+
+.field-input {
+  flex: 1;
+  min-width: 0;
+  height: 104rpx;
+  font-size: 28rpx;
+  color: #24150d;
+}
+
+.field-placeholder {
+  color: #c5ad99;
+}
+
+.region-value {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  min-width: 0;
+  height: 104rpx;
+}
+
+.region-placeholder {
+  font-size: 28rpx;
+  color: #c5ad99;
+}
+
+.region-arrow {
+  flex-shrink: 0;
+  font-size: 44rpx;
+  line-height: 44rpx;
+  color: #c6ad99;
+}
+
+.field-textarea {
+  flex: 1;
+  min-width: 0;
+  height: 150rpx;
+  padding-top: 0;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #24150d;
+}
+
+.setting-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20rpx;
+  margin-top: 24rpx;
+  padding: 28rpx;
+}
+
+.setting-main {
+  min-width: 0;
+}
+
+.setting-title {
+  font-size: 30rpx;
+  font-weight: 800;
+  line-height: 40rpx;
+  color: #24150d;
+}
+
+.setting-desc {
+  margin-top: 6rpx;
+  font-size: 24rpx;
+  line-height: 34rpx;
+  color: #9a7a62;
+}
+
+.save-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 92rpx;
+  margin-top: 34rpx;
+  border-radius: 20rpx;
+  font-size: 31rpx;
+  font-weight: 800;
+  color: #ffffff;
+  background: #3a2417;
+  box-shadow: 0 14rpx 30rpx rgba(58, 36, 23, 0.18);
+}

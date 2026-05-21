@@ -31,6 +31,10 @@ Page({
     wx.navigateTo({ url: '/pages/mine/login/index' });
   },
 
+  toAddressList() {
+    wx.navigateTo({ url: '/pages/mine/address-list/index' })
+  },
+
   logout() {
     wx.showModal({
       title: '提示',

@@ -1,0 +1,156 @@
+.address-page {
+  min-height: 100vh;
+  padding: 34rpx 28rpx 54rpx;
+  box-sizing: border-box;
+  background: #f6f1eb;
+}
+
+.page-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24rpx;
+  margin-bottom: 26rpx;
+}
+
+.page-title {
+  font-size: 42rpx;
+  font-weight: 800;
+  line-height: 54rpx;
+  color: #24150d;
+}
+
+.page-subtitle {
+  margin-top: 8rpx;
+  font-size: 25rpx;
+  line-height: 36rpx;
+  color: #9a7a62;
+}
+
+.add-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  min-width: 118rpx;
+  height: 68rpx;
+  padding: 0 24rpx;
+  border-radius: 999rpx;
+  box-sizing: border-box;
+  font-size: 27rpx;
+  font-weight: 700;
+  color: #ffffff;
+  background: #3a2417;
+  box-shadow: 0 12rpx 24rpx rgba(58, 36, 23, 0.18);
+}
+
+.address-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22rpx;
+}
+
+.address-card {
+  padding: 28rpx;
+  border: 2rpx solid transparent;
+  border-radius: 24rpx;
+  background: #ffffff;
+  box-shadow: 0 14rpx 34rpx rgba(70, 45, 28, 0.1);
+}
+
+.address-card-active {
+  border-color: #7a231e;
+  box-shadow: 0 18rpx 40rpx rgba(122, 35, 30, 0.14);
+}
+
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18rpx;
+}
+
+.receiver {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 14rpx;
+  min-width: 0;
+}
+
+.receiver-name {
+  font-size: 32rpx;
+  font-weight: 800;
+  line-height: 42rpx;
+  color: #24150d;
+}
+
+.receiver-phone {
+  font-size: 25rpx;
+  line-height: 34rpx;
+  color: #7f6654;
+}
+
+.default-tag {
+  flex-shrink: 0;
+  padding: 7rpx 16rpx;
+  border-radius: 999rpx;
+  font-size: 22rpx;
+  font-weight: 700;
+  line-height: 28rpx;
+  color: #7a231e;
+  background: #f7e7df;
+}
+
+.address-text {
+  margin-top: 18rpx;
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #3b2a20;
+}
+
+.card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20rpx;
+  margin-top: 24rpx;
+  padding-top: 22rpx;
+  border-top: 1rpx solid #efe4d7;
+}
+
+.select-state {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  font-size: 25rpx;
+  line-height: 34rpx;
+  color: #7f6654;
+}
+
+.radio-dot {
+  width: 30rpx;
+  height: 30rpx;
+  border: 3rpx solid #d8c6b7;
+  border-radius: 50%;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+.radio-dot-active {
+  border: 8rpx solid #7a231e;
+}
+
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 26rpx;
+  flex-shrink: 0;
+  font-size: 25rpx;
+  line-height: 34rpx;
+  color: #7a231e;
+}
+
+.bottom-placeholder {
+  height: 24rpx;
+}
