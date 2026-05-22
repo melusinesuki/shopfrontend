@@ -1,0 +1,49 @@
+<view class="checkout-page">
+  <view class="address-card" bind:tap="toAddressSelect">
+    <view class="address-icon">址</view>
+    <view class="address-main" wx:if="{{addressBean.longId}}">
+      <view class="address-user">
+        <text class="address-name">{{addressBean.strNickname}}</text>
+        <text class="address-phone">{{addressBean.strCellphone}}</text>
+        <text wx:if="{{addressBean.intIsDefault == 1}}" class="default-tag">默认</text>
+      </view>
+      <view class="address-text">
+        {{addressBean.strProvinces}}{{addressBean.strCity}}{{addressBean.strDistrict}}{{addressBean.strDetailAddress}}
+      </view>
+    </view>
+    <view class="address-main" wx:else>
+      <view class="empty-address-title">请选择收货地址</view>
+      <view class="empty-address-desc">添加地址后用于商品配送</view>
+    </view>
+    <view class="address-arrow">›</view>
+  </view>
+
+  <view class="section-card">
+    <view class="section-head">
+      <view class="section-title">商品清单</view>
+      <view class="section-count">共 {{productList.length}} 件</view>
+    </view>
+
+    <view class="product-item" wx:for="{{productList}}" wx:key="longId">
+      <image class="product-image" src="{{item.productBean.strSurface}}" mode="aspectFill"></image>
+      <view class="product-info">
+        <view class="product-name">{{item.productBean.strTitle}}</view>
+        <view class="product-desc">{{item.productBean.strUse}}</view>
+        <view class="product-bottom">
+          <view class="product-price">¥{{item.productBean.intPrice / 100}}</view>
+          <view class="product-num">x{{item.intNum}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="bottom-space"></view>
+
+  <view class="checkout-bar">
+    <view class="bar-total">
+      <view class="bar-label">合计</view>
+      <view class="bar-price">¥ {{totalPrice/100}}</view>
+    </view>
+    <button class="submit-btn" bind:tap="saveOrder">确认下单</button>
+  </view>
+</view>

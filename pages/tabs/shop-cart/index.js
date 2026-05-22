@@ -108,6 +108,12 @@ Page({
       wx.showToast({ title: '购物车为空', icon: 'none' });
       return;
     }
-    wx.showToast({ title: '功能开发中', icon: 'none' });
+    const list = this.data.cart;
+    wx.navigateTo({
+      url: '/pages/shop/checkout/index',
+      success: (res) => {
+        res.eventChannel.emit('acceptShopcart', list);
+      }
+    });
   }
 });

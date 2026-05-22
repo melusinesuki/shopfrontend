@@ -1,0 +1,19 @@
+<view class="address-page">
+
+  <view class="address-list">
+    <view class="address-card address-card-active" wx:for="{{addressList}}" wx:key="longId"
+      bind:tap="selectAddress" data-id="{{item.longId}}"
+    >
+      <view class="card-top">
+        <view class="receiver">
+          <text class="receiver-name">{{item.strNickname}}</text>
+          <text class="receiver-phone">{{item.strCellphone}}</text>
+        </view>
+        <view class="default-tag" wx:if="{{item.intIsDefault==1}}">默认</view>
+      </view>
+      <view class="address-text">{{item.strProvinces}} {{item.strCity}} {{item.strDistrict}} {{item.strDetailAddress}}</view>
+    </view>
+  </view>
+
+  <view class="bottom-placeholder"></view>
+</view>

@@ -1,0 +1,248 @@
+.checkout-page {
+  min-height: 100vh;
+  padding: 24rpx 28rpx 210rpx;
+  box-sizing: border-box;
+  background: #f5f5f5;
+}
+
+.address-card,
+.section-card {
+  border-radius: 24rpx;
+  background: #ffffff;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
+}
+
+.address-card {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  padding: 28rpx;
+}
+
+.address-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 20rpx;
+  font-size: 28rpx;
+  font-weight: 800;
+  color: #ffffff;
+  background: #ff4757;
+}
+
+.address-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.address-user {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.address-name {
+  font-size: 31rpx;
+  font-weight: 800;
+  line-height: 40rpx;
+  color: #333333;
+}
+
+.address-phone {
+  font-size: 25rpx;
+  line-height: 34rpx;
+  color: #999999;
+}
+
+.default-tag {
+  padding: 5rpx 14rpx;
+  border-radius: 999rpx;
+  font-size: 21rpx;
+  font-weight: 700;
+  line-height: 28rpx;
+  color: #ff4757;
+  background: #fff0f0;
+}
+
+.address-text,
+.empty-address-desc {
+  margin-top: 8rpx;
+  font-size: 25rpx;
+  line-height: 36rpx;
+  color: #999999;
+}
+
+.empty-address-title {
+  font-size: 31rpx;
+  font-weight: 800;
+  line-height: 40rpx;
+  color: #333333;
+}
+
+.address-arrow {
+  flex-shrink: 0;
+  font-size: 44rpx;
+  line-height: 44rpx;
+  color: #cccccc;
+}
+
+.section-card {
+  margin-top: 24rpx;
+  padding: 28rpx;
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20rpx;
+  margin-bottom: 22rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 800;
+  line-height: 42rpx;
+  color: #333333;
+}
+
+.section-count {
+  font-size: 24rpx;
+  line-height: 34rpx;
+  color: #999999;
+}
+
+.product-item {
+  display: flex;
+  gap: 20rpx;
+  padding: 24rpx 0;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.product-item:first-of-type {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.product-item:last-child {
+  padding-bottom: 0;
+}
+
+.product-image {
+  display: block;
+  flex-shrink: 0;
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 18rpx;
+  background: #f5f5f5;
+}
+
+.product-info {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.product-name {
+  overflow: hidden;
+  font-size: 29rpx;
+  font-weight: 800;
+  line-height: 38rpx;
+  color: #333333;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.product-desc {
+  display: -webkit-box;
+  overflow: hidden;
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  line-height: 34rpx;
+  color: #999999;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.product-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18rpx;
+  margin-top: auto;
+}
+
+.product-price {
+  font-size: 31rpx;
+  font-weight: 800;
+  line-height: 40rpx;
+  color: #ff4757;
+}
+
+.product-num {
+  font-size: 25rpx;
+  line-height: 34rpx;
+  color: #999999;
+}
+
+.bottom-space {
+  height: calc(150rpx + env(safe-area-inset-bottom));
+}
+
+.checkout-bar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22rpx;
+  padding: 18rpx 28rpx calc(18rpx + env(safe-area-inset-bottom));
+  border-top: 1rpx solid #f0f0f0;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 -4rpx 16rpx rgba(0, 0, 0, 0.06);
+}
+
+.bar-total {
+  min-width: 0;
+}
+
+.bar-label {
+  font-size: 23rpx;
+  line-height: 30rpx;
+  color: #999999;
+}
+
+.bar-price {
+  margin-top: 2rpx;
+  font-size: 31rpx;
+  font-weight: 800;
+  line-height: 40rpx;
+  color: #ff4757;
+}
+
+.submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 236rpx;
+  height: 88rpx;
+  border-radius: 20rpx;
+  font-size: 30rpx;
+  font-weight: 800;
+  color: #ffffff;
+  background: #ff4757;
+  box-shadow: 0 8rpx 20rpx rgba(255, 71, 87, 0.3);
+}
+
+.submit-btn::after {
+  border: 0;
+}
