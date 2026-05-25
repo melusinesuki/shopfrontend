@@ -14,7 +14,7 @@
 
   <!-- 菜单 -->
   <view class="menu-list" wx:if="{{isLogin}}">
-    <view class="menu-item">
+    <view class="menu-item" bind:tap="toOrderList">
       <text>我的订单</text>
       <text class="arrow">›</text>
     </view>

@@ -35,6 +35,10 @@ Page({
     wx.navigateTo({ url: '/pages/mine/address-list/index' })
   },
 
+  toOrderList() {
+    wx.navigateTo({ url: '/pages/mine/order-list/index' })
+  },
+
   logout() {
     wx.showModal({
       title: '提示',
