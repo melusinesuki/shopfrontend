@@ -51,13 +51,17 @@ Page({
 
   buyNow() {
     const product = this.data.productDetail
-    wx.showModal({
-      title: '确认购买',
-      content: '确定要购买「' + product.strTitle + '」吗？',
+    if (!product.longId) return;
+
+    const shopCartBean = {
+      longProductId: product.longId,
+      intNum: 1,
+      productBean: product
+    }
+    wx.navigateTo({
+      url: "/pages/shop/checkout/index",
       success: (res) => {
-        if (res.confirm) {
-          wx.showToast({ title: '下单成功', icon: 'success' })
-        }
+        res.eventChannel.emit('acceptShopcart', [shopCartBean]);
       }
     })
   },

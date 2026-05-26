@@ -44,11 +44,16 @@ Page({
   },
 
   async saveOrder() {
-    const shopCartIdList = this.data.productList.map(item => item.longId);
-    let resultBean = await httpClient("/shop-order/save", {
-      longAddressId: this.data.addressBean.longId,
-      shopCartIdList: shopCartIdList
-    })
+    const params = { longAddressId: this.data.addressBean.longId }
+    if (this.data.productList?.[0]?.longId) {
+      const shopCartIdList = this.data.productList.map(item => item.longId);
+      params.shopCartIdList = shopCartIdList;
+    } else {
+      const productIdList = this.data.productList.map(item => item.longProductId);
+      params.productIdList = productIdList;
+    }
+
+    let resultBean = await httpClient("/shop-order/save", params);
     const shopOrderBean = resultBean.objData;
 
     wx.showLoading({ title: "检查支付结果..." })

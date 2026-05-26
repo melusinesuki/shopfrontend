@@ -12,6 +12,8 @@ App({
       this.globalData.isLogin = true
       // 恢复登录态后拉取购物车
       this.fetchCart()
+      // 检查未读消息
+      this.checkUnreadMessages()
     }
 
     wx.login({
@@ -30,6 +32,23 @@ App({
         const result = resp.data
         if (result.intCode === 200) {
           this.globalData.cart = result.objData || []
+        }
+      }
+    })
+  },
+
+  checkUnreadMessages() {
+    wx.request({
+      url: 'http://localhost:8080/system-message/list-all',
+      method: 'POST',
+      header: { token: this.globalData.token },
+      data: {},
+      success: (resp) => {
+        const result = resp.data
+        if (result.intCode === 200 && result.objData && result.objData.length > 0) {
+          wx.showTabBarRedDot({ index: 3 })
+        } else {
+          wx.hideTabBarRedDot({ index: 3 })
         }
       }
     })

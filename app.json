@@ -3,6 +3,7 @@
     "pages/tabs/index/index",
     "pages/tabs/shop/index",
     "pages/tabs/shop-cart/index",
+    "pages/tabs/message/index",
     "pages/tabs/mine/index"
   ],
   "subPackages": [
@@ -64,6 +65,12 @@
         "text": "购物车",
         "iconPath": "images/cart.png",
         "selectedIconPath": "images/cart-active.png"
+      },
+      {
+        "pagePath": "pages/tabs/message/index",
+        "text": "通知",
+        "iconPath": "images/message.png",
+        "selectedIconPath": "images/message-active.png"
       },
       {
         "pagePath": "pages/tabs/mine/index",
