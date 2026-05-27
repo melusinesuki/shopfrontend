@@ -1,4 +1,4 @@
-import { httpClient } from "@/utils/util.js"
+const { httpClient } = require("../../../utils/util.js")
 
 Page({
 

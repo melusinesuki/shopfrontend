@@ -39,6 +39,14 @@ Page({
     wx.navigateTo({ url: '/pages/mine/order-list/index' })
   },
 
+  toFavorites() {
+    wx.showToast({ title: '收藏功能开发中', icon: 'none' });
+  },
+
+  toSettings() {
+    wx.showToast({ title: '设置功能开发中', icon: 'none' });
+  },
+
   logout() {
     wx.showModal({
       title: '提示',

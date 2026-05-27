@@ -1,4 +1,4 @@
-import { httpClient } from "@/utils/util.js"
+const { httpClient } = require("../../../utils/util.js")
 
 Page({
 
@@ -26,9 +26,9 @@ Page({
     wx.navigateTo({
       url: "/pages/shop/address-select/index",
       events: {
-        acceptAddress: (res) => {
-          if (res) {
-            this.setData({ addressBean: res });
+        acceptAddress: (data) => {
+          if (data && data.longId) {
+            this.setData({ addressBean: data });
           }
         }
       }
@@ -44,6 +44,11 @@ Page({
   },
 
   async saveOrder() {
+    if (!this.data.addressBean.longId) {
+      wx.showToast({ title: '请选择收货地址', icon: 'none' });
+      return;
+    }
+
     const params = { longAddressId: this.data.addressBean.longId }
     if (this.data.productList?.[0]?.longId) {
       const shopCartIdList = this.data.productList.map(item => item.longId);
@@ -53,19 +58,35 @@ Page({
       params.productIdList = productIdList;
     }
 
-    let resultBean = await httpClient("/shop-order/save", params);
+    wx.showLoading({ title: "下单中..." });
+    let resultBean;
+    try {
+      resultBean = await httpClient("/shop-order/save", params);
+    } catch (e) {
+      wx.hideLoading();
+      return;
+    }
     const shopOrderBean = resultBean.objData;
 
-    wx.showLoading({ title: "检查支付结果..." })
-    setTimeout(async () => {
-      wx.hideLoading();
-      resultBean = await httpClient("/shop-order/check-pay-status", { longId: shopOrderBean.longId });
-      if (resultBean.intCode == 500) {
-        wx.showToast({ icon: "error", title: "支付失败" });
-      } else {
-        wx.showToast({ icon: "success", title: "支付成功" });
-        wx.navigateBack();
+    wx.showLoading({ title: "支付中..." });
+    await this.pollPayStatus(shopOrderBean.longId);
+    wx.hideLoading();
+  },
+
+  async pollPayStatus(orderId) {
+    for (let i = 0; i < 5; i++) {
+      await new Promise(r => setTimeout(r, 1500));
+      try {
+        const resultBean = await httpClient("/shop-order/check-pay-status", { longId: orderId });
+        if (resultBean.intCode == 200) {
+          wx.showToast({ icon: "success", title: "支付成功" });
+          wx.navigateBack();
+          return;
+        }
+      } catch (e) {
+        // 继续轮询
       }
-    }, 2000)
+    }
+    wx.showToast({ icon: "error", title: "支付超时，请稍后查看订单" });
   }
 })

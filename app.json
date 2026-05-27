@@ -19,7 +19,6 @@
       "root": "pages/mine",
       "pages": [
         "login/index",
-        "register/index",
         "address-list/index",
         "address-edit/index",
         "order-list/index"

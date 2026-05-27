@@ -26,8 +26,7 @@
     <button class="login-btn" bind:tap="toLogin">登 录</button>
 
     <view class="login-bottom">
-      <text>还没有账号？</text>
-      <text class="link" bind:tap="toRegister">去注册</text>
+      <text>使用邮箱验证码即可登录</text>
     </view>
   </view>
 </view>

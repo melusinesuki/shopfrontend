@@ -76,7 +76,4 @@ Page({
     }
   },
 
-  toRegister() {
-    wx.navigateTo({ url: '/pages/mine/register/index' });
-  }
 });

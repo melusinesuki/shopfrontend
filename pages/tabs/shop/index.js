@@ -7,19 +7,7 @@ Page({
   data: {
     products: [],
     title:"",
-    loading: true,
-    banners: [
-      { title: '新品首发', desc: '限时特惠 全场低至5折', bg: '#ff6b81' },
-      { title: '每日精选', desc: '品质好物 天天低价', bg: '#ffa502' },
-      { title: '会员专享', desc: '开通会员享更多优惠', bg: '#3742fa' }
-    ],
-    categories: [
-      { name: '食品饮料', icon: '🍜' },
-      { name: '日用百货', icon: '🧴' },
-      { name: '新鲜水果', icon: '🍎' },
-      { name: '酒水饮品', icon: '🍷' },
-      { name: '休闲零食', icon: '🍪' }
-    ]
+    loading: true
   },
   onLoad() {
     this.listProduct()
@@ -108,7 +96,7 @@ Page({
     this.listProduct();
   },
   changeTitle(e){
-    this.data.title=e.detail.value;
+    this.setData({ title: e.detail.value });
   },
   search(){
     pageNum=1
@@ -118,6 +106,10 @@ Page({
 
   },
   async addToCart(e) {
+    if (!app.globalData.isLogin) {
+      wx.navigateTo({ url: '/pages/mine/login/index' });
+      return;
+    }
     const productId = e.currentTarget.dataset.id;
     if (!productId) return;
 

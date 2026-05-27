@@ -1,4 +1,4 @@
-import { httpClient, formatTime } from "@/utils/util.js"
+const { httpClient, formatTime } = require("../../../utils/util.js")
 
 Page({
   data: {

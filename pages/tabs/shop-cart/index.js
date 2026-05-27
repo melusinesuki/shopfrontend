@@ -104,6 +104,10 @@ Page({
   },
 
   checkout() {
+    if (!app.globalData.isLogin) {
+      wx.navigateTo({ url: '/pages/mine/login/index' });
+      return;
+    }
     if (this.data.cart.length === 0) {
       wx.showToast({ title: '购物车为空', icon: 'none' });
       return;

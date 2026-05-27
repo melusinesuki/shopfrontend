@@ -1,15 +1,4 @@
 
-<!-- 轮播图 -->
-<swiper class="banner" indicator-dots indicator-color="rgba(255,255,255,0.4)" indicator-active-color="#ff4757" autoplay circular>
-  <swiper-item wx:for="{{banners}}" wx:key="*this">
-    <view class="banner-slide" style="background-color: {{item.bg}}">
-      <view class="banner-text">
-        <view class="banner-title">{{item.title}}</view>
-        <view class="banner-desc">{{item.desc}}</view>
-      </view>
-    </view>
-  </swiper-item>
-</swiper>
 <view class="search-bar">
   <view class="search-input">
     <text class="search-icon">🔍</text>
@@ -24,6 +13,7 @@
   </view>
   <button class="search-btn" bind:tap="search">搜索</button>
 </view>
+
 <view class="filter">
   <button bind:tap="changesort" data-orderby="created_at desc">最新上架</button>
   <button bind:tap="changesort" data-orderby="int_price asc">低价优先</button>

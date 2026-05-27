@@ -30,6 +30,10 @@ Page({
   },
 
   async addToCart() {
+    if (!app.globalData.isLogin) {
+      wx.navigateTo({ url: '/pages/mine/login/index' });
+      return;
+    }
     const productId = this.data.productDetail.longId;
     if (!productId) return;
 
@@ -50,6 +54,10 @@ Page({
   },
 
   buyNow() {
+    if (!app.globalData.isLogin) {
+      wx.navigateTo({ url: '/pages/mine/login/index' });
+      return;
+    }
     const product = this.data.productDetail
     if (!product.longId) return;
 
