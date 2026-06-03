@@ -66,27 +66,8 @@ Page({
       wx.hideLoading();
       return;
     }
-    const shopOrderBean = resultBean.objData;
-
-    wx.showLoading({ title: "支付中..." });
-    await this.pollPayStatus(shopOrderBean.longId);
     wx.hideLoading();
+    wx.showToast({ icon: "success", title: "下单成功" });
+    wx.navigateBack();
   },
-
-  async pollPayStatus(orderId) {
-    for (let i = 0; i < 5; i++) {
-      await new Promise(r => setTimeout(r, 1500));
-      try {
-        const resultBean = await httpClient("/shop-order/check-pay-status", { longId: orderId });
-        if (resultBean.intCode == 200) {
-          wx.showToast({ icon: "success", title: "支付成功" });
-          wx.navigateBack();
-          return;
-        }
-      } catch (e) {
-        // 继续轮询
-      }
-    }
-    wx.showToast({ icon: "error", title: "支付超时，请稍后查看订单" });
-  }
 })

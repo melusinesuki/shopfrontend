@@ -177,6 +177,68 @@
   color: #6f5847;
 }
 
+.order-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 18rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #efe4d7;
+}
+
+.cancel-btn {
+  padding: 12rpx 28rpx;
+  border-radius: 999rpx;
+  font-size: 24rpx;
+  font-weight: 700;
+  line-height: 34rpx;
+  color: #9a7a62;
+  border: 2rpx solid #d4c4b2;
+  background: transparent;
+}
+
+.cancel-btn:active {
+  color: #7a231e;
+  border-color: #7a231e;
+  background: #fdf0ea;
+}
+
+.delete-btn {
+  padding: 12rpx 28rpx;
+  border-radius: 999rpx;
+  font-size: 24rpx;
+  font-weight: 700;
+  line-height: 34rpx;
+  color: #b0b0b0;
+  border: 2rpx solid #e0e0e0;
+  background: transparent;
+}
+
+.delete-btn:active {
+  color: #666;
+  border-color: #999;
+  background: #f5f5f5;
+}
+
+.pay-btn {
+  padding: 12rpx 28rpx;
+  border-radius: 999rpx;
+  font-size: 24rpx;
+  font-weight: 700;
+  line-height: 34rpx;
+  color: #ffffff;
+  background: #7a231e;
+}
+
+.pay-btn:active {
+  background: #5a1a16;
+}
+
+.order-footer {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 18rpx;
+}
+
 .pay-price {
   font-size: 32rpx;
   font-weight: 800;

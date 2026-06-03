@@ -29,9 +29,16 @@
         </view>
       </view>
 
+      <view class="order-actions">
+        <view wx:if="{{item.intStatus === 0}}" class="pay-btn" data-id="{{item.longId}}" bindtap="onPayOrder">去支付</view>
+        <view wx:if="{{item.intStatus === 0 || item.intStatus === 1}}" class="cancel-btn" data-id="{{item.longId}}" data-status="{{item.intStatus}}" bindtap="onCancelOrder">取消订单</view>
+      </view>
       <view class="order-summary">
         <text>共 {{item.productCount}} 件</text>
         <text>实付 <text class="pay-price">¥{{item.intPayPrice / 100}}</text></text>
+      </view>
+      <view class="order-footer">
+        <view class="delete-btn" data-id="{{item.longId}}" bindtap="onDeleteOrder">删除</view>
       </view>
     </view>
   </view>
